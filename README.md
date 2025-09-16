@@ -12,6 +12,8 @@ Nous mettons à ta disposition une API de gestion de stock pour laquelle tu disp
 
 👉 Une fois terminé, merci de le remettre dans un **dépôt GitHub privé** et de nous y inviter.
 
+⚠️ Il n'est pas éliminatoire de ne pas terminer le test ; l'important est d'aller à ton rythme et de maintenir un code propre et maintenable tout au long du test.
+
 ### Prérequis
 - Node.js >= 18
 - Expo CLI
