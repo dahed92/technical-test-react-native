@@ -1,7 +1,7 @@
 import { product } from "./items";
 import { pagination } from "./pagination";
 
-export type customResponse = {
+export type productListResponse = {
     items: product[],
     pagination: pagination
 }
