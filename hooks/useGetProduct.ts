@@ -10,7 +10,7 @@ const Bearer = "cDVI7vBrvS2U4BlBzLFpO9lTOu2ahuqNbyF1fa4S8ndOD7T3gCnzSx7TqT3s"
 
 const LIMIT = 20;
 
-type productStatus = "in_stock" | "low_stock" | "out_of_stock"
+export type productStatus = "in_stock" | "low_stock" | "out_of_stock"
 
 const fetchProducts = async (limit: number, status?: productStatus) => {
     const u = new URLSearchParams({

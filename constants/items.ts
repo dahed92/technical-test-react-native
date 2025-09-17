@@ -1,4 +1,4 @@
-export type items = {
+export type product = {
     id: number,
     account_id: number,
     category_id: number,
