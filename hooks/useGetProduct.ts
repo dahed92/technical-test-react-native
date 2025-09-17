@@ -1,3 +1,6 @@
+import { customResponse } from "@/constants/http-response";
+import { isSuccessful } from "@/constants/http-status";
+import { queryKeys } from "@/constants/queryKeys";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 const BASE_URL = "https://technical-test-react-native-back-master-oibbvb.laravel.cloud/api/v1/products"
@@ -24,16 +27,16 @@ const fetchProducts = async (limit: number, status?: productStatus) => {
         })
 
         if (res.status === 400 || res.status === 404) {
-            return {}
+            return { items: [], pagination: {} } as unknown as customResponse
         }
 
-        if (!res.ok) {
+        if (!isSuccessful(res.status)) {
             throw new Error("An erro occured in fetching products")
         }
 
         const json = await res.json()
 
-        return json
+        return json as customResponse
 
     } catch (error) {
         console.error(`An error occured in fetchProducts  ${error}`)
@@ -42,9 +45,13 @@ const fetchProducts = async (limit: number, status?: productStatus) => {
 }
 
 
-// export const useGetProducts = (status?: productStatus) => {
+export const useGetProducts = (status?: productStatus) => {
 
-//     return useInfiniteQuery({
+    return useInfiniteQuery({
+        queryKey: [queryKeys.productList, status],
+        queryFn: () => fetchProducts(LIMIT, status),
+        initialPageParam: "",
+        getNextPageParam: (response) => response.pagination.next_page_url
+    })
 
-//     })
-// }
+}
